@@ -3,51 +3,50 @@ package com.stockagent.dao;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 
-import com.stockagent.model.Employee;
+import com.stockagent.model.Product;
 import com.stockagent.util.JPAUtil;
 
-public class EmployeeDAOImpl implements EmployeeDAO {
-	
+public class ProductDAOImpl implements ProductDAO {
+
 EntityManager manager = null;
 	
 	@Override
-	public List<Employee> get() {
+	public List<Product> get() {
 				
 		try {
 			manager = JPAUtil.getEntityManager();
-			TypedQuery<Employee> namedQuery = manager.createNamedQuery("Employee.findAll", Employee.class);
-			List<Employee> results = namedQuery.getResultList();
+			TypedQuery<Product> namedQuery = manager.createNamedQuery("Product.findAll", Product.class);
+			List<Product> results = namedQuery.getResultList();
 			manager.close();
 			return results;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return new ArrayList<Employee>();
+		return new ArrayList<Product>();
 	}
 
 	@Override
-	public Employee get(int id) {
-		Employee employee = null;
+	public Product get(long id) {
+		Product product = null;
 		try {
 			manager = JPAUtil.getEntityManager();
-			employee = manager.find(Employee.class, id);
+			product = manager.find(Product.class, id);
 			manager.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return employee;
+		return product;
 	}
 
 	@Override
-	public boolean save(Employee employee) {
+	public boolean save(Product product) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();   
-			manager.persist(employee); 
+			manager.persist(product); 
 			manager.getTransaction().commit(); 
 			manager.close();
 			flag = true;
@@ -58,14 +57,14 @@ EntityManager manager = null;
 	}
 
 	@Override
-	public boolean delete(int id) {
+	public boolean delete(long id) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();   
-			Employee employee = manager.find(Employee.class, id);
-			if (employee != null) {
-				manager.remove(employee);
+			Product product = manager.find(Product.class, id);
+			if (product != null) {
+				manager.remove(product);
 				manager.getTransaction().commit(); 
 				flag = true;
 			}
@@ -77,12 +76,12 @@ EntityManager manager = null;
 	}
 
 	@Override
-	public boolean update(Employee employee) {
+	public boolean update(Product product) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();   
-			manager.merge(employee); 
+			manager.merge(product); 
 			manager.getTransaction().commit(); 
 			manager.close();
 			flag = true;

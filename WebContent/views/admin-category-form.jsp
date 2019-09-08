@@ -8,10 +8,32 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><b>StockAgent</b></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/stockagent/">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/stockagent/AdminCategoryServ?action=LIST">Categories</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/stockagent/AdminProductServ?action=LIST">Products</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+	  
+	  <div class = "container">
 	
-	<div class = "container">
-	
-		<h1>Category Form</h1>
+		<h3>Category Form</h3>
 		<hr/>
 		
 		<div class = "row">

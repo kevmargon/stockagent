@@ -133,6 +133,14 @@ public class Product implements Serializable {
 		this.orders = orders;
 	}
 
+	public String getManufacturer() {
+		return manufacturer;
+	}
+
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

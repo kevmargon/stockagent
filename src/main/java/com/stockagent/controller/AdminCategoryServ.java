@@ -81,9 +81,9 @@ public class AdminCategoryServ extends HttpServlet {
 
 	private void listCategory(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Category> theList = categoryDAO.get();
+		List<Category> theListC = categoryDAO.get();
 		
-		request.setAttribute("list", theList);
+		request.setAttribute("listC", theListC);
 
 		dispatcher = request.getRequestDispatcher("/views/admin-category-list.jsp");
 		
