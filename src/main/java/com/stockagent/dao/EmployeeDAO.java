@@ -2,6 +2,7 @@ package com.stockagent.dao;
 
 import java.util.List;
 
+
 import com.stockagent.model.Employee;
 
 public interface EmployeeDAO {
@@ -17,7 +18,7 @@ public interface EmployeeDAO {
 	 * @param id
 	 * @return
 	 */
-	Employee get(int id);
+	Employee get(long id);
 	
 	/**
 	 * It saves a Employee
@@ -31,7 +32,7 @@ public interface EmployeeDAO {
 	 * @param id
 	 * @return 
 	 */
-	boolean delete(int id);
+	boolean delete(long id);
 	
 	boolean update(Employee employee);
 

@@ -2,6 +2,7 @@ package com.stockagent.dao;
 
 import java.util.List;
 
+
 import com.stockagent.model.Product;
 
 public interface ProductDAO {

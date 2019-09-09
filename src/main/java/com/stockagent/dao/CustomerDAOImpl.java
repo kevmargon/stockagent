@@ -1,53 +1,52 @@
 package com.stockagent.dao;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import javax.persistence.*;
 
-import com.stockagent.model.Product;
+import com.stockagent.model.Customer;
 import com.stockagent.util.JPAUtil;
 
-public class ProductDAOImpl implements ProductDAO {
+public class CustomerDAOImpl implements CustomerDAO {
 
 EntityManager manager = null;
 	
 	@Override
-	public List<Product> get() {
+	public List<Customer> get() {
 				
 		try {
 			manager = JPAUtil.getEntityManager();
-			TypedQuery<Product> namedQuery = manager.createNamedQuery("Product.findAll", Product.class);
-			List<Product> results = namedQuery.getResultList();
+			TypedQuery<Customer> namedQuery = manager.createNamedQuery("Customer.findAll", Customer.class);
+			List<Customer> results = namedQuery.getResultList();
 			manager.close();
 			return results;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return new ArrayList<Product>();
+		return new ArrayList<Customer>();
 	}
 
 	@Override
-	public Product get(long id) {
-		Product product = null;
+	public Customer get(long id) {
+		Customer customer = null;
 		try {
 			manager = JPAUtil.getEntityManager();
-			product = manager.find(Product.class, id);
+			customer = manager.find(Customer.class, id);
 			manager.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return product;
+		return customer;
 	}
 
 	@Override
-	public boolean save(Product product) {
+	public boolean save(Customer customer) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();   
-			manager.persist(product); 
+			manager.persist(customer); 
 			manager.getTransaction().commit(); 
 			manager.close();
 			flag = true;
@@ -63,9 +62,9 @@ EntityManager manager = null;
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();   
-			Product product = manager.find(Product.class, id);
-			if (product != null) {
-				manager.remove(product);
+			Customer customer = manager.find(Customer.class, id);
+			if (customer != null) {
+				manager.remove(customer);
 				manager.getTransaction().commit(); 
 				flag = true;
 			}
@@ -77,12 +76,12 @@ EntityManager manager = null;
 	}
 
 	@Override
-	public boolean update(Product product) {
+	public boolean update(Customer customer) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();   
-			manager.merge(product); 
+			manager.merge(customer); 
 			manager.getTransaction().commit(); 
 			manager.close();
 			flag = true;

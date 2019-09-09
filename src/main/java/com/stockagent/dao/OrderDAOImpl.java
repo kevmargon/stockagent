@@ -1,53 +1,52 @@
 package com.stockagent.dao;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import javax.persistence.*;
 
-import com.stockagent.model.Product;
+import com.stockagent.model.Order;
 import com.stockagent.util.JPAUtil;
 
-public class ProductDAOImpl implements ProductDAO {
+public class OrderDAOImpl implements OrderDAO {
 
 EntityManager manager = null;
 	
 	@Override
-	public List<Product> get() {
+	public List<Order> get() {
 				
 		try {
 			manager = JPAUtil.getEntityManager();
-			TypedQuery<Product> namedQuery = manager.createNamedQuery("Product.findAll", Product.class);
-			List<Product> results = namedQuery.getResultList();
+			TypedQuery<Order> namedQuery = manager.createNamedQuery("Order.findAll", Order.class);
+			List<Order> results = namedQuery.getResultList();
 			manager.close();
 			return results;
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return new ArrayList<Product>();
+		return new ArrayList<Order>();
 	}
 
 	@Override
-	public Product get(long id) {
-		Product product = null;
+	public Order get(long id) {
+		Order order = null;
 		try {
 			manager = JPAUtil.getEntityManager();
-			product = manager.find(Product.class, id);
+			order = manager.find(Order.class, id);
 			manager.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return product;
+		return order;
 	}
 
 	@Override
-	public boolean save(Product product) {
+	public boolean save(Order order) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();   
-			manager.persist(product); 
+			manager.persist(order); 
 			manager.getTransaction().commit(); 
 			manager.close();
 			flag = true;
@@ -63,9 +62,9 @@ EntityManager manager = null;
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();   
-			Product product = manager.find(Product.class, id);
-			if (product != null) {
-				manager.remove(product);
+			Order order = manager.find(Order.class, id);
+			if (order != null) {
+				manager.remove(order);
 				manager.getTransaction().commit(); 
 				flag = true;
 			}
@@ -77,12 +76,12 @@ EntityManager manager = null;
 	}
 
 	@Override
-	public boolean update(Product product) {
+	public boolean update(Order order) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();   
-			manager.merge(product); 
+			manager.merge(order); 
 			manager.getTransaction().commit(); 
 			manager.close();
 			flag = true;

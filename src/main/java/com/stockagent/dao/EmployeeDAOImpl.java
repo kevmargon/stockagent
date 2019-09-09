@@ -29,7 +29,7 @@ EntityManager manager = null;
 	}
 
 	@Override
-	public Employee get(int id) {
+	public Employee get(long id) {
 		Employee employee = null;
 		try {
 			manager = JPAUtil.getEntityManager();
@@ -58,7 +58,7 @@ EntityManager manager = null;
 	}
 
 	@Override
-	public boolean delete(int id) {
+	public boolean delete(long id) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();

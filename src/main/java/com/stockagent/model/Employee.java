@@ -48,8 +48,8 @@ public class Employee implements Serializable{
 	@Column (name = "dni")
 	private String dni;
 	
-	@Column (name = "phonenumber")
-	private int phoneNumber;
+	@Column (name = "phonenumber", nullable = false)
+	private Integer phoneNumber = 0;
 	
 	//Unidirectional association to Direction
 	@OneToOne(cascade = {CascadeType.ALL}) 
@@ -65,7 +65,7 @@ public class Employee implements Serializable{
 	@JoinTable(name = "employee_position",
 	joinColumns = @JoinColumn(name = "id_employee", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "id_position", referencedColumnName = "id"))
-	private List<Position> positions = new ArrayList<>();
+	private List<Rol> positions = new ArrayList<>();
 	
 	// Bi-directional one-to-many association to Order
 	@OneToMany(mappedBy = "employee", cascade = {CascadeType.ALL}) //REV: podemos Lazy??, cascada?
@@ -75,6 +75,15 @@ public class Employee implements Serializable{
 	public Employee() {
 	}
 	
+	
+	
+	public Employee(String user, String pass) {
+		this.user = user;
+		this.pass = pass;
+	}
+
+
+
 	public Employee(String user, String pass, String name, String surname1, String surname2, String dni,
 			int phoneNumber, Direction direction, Report report) {
 		this.user = user;
@@ -139,7 +148,7 @@ public class Employee implements Serializable{
 		return report;
 	}
 
-	public List<Position> getPositions() {
+	public List<Rol> getPositions() {
 		return positions;
 	}
 
@@ -179,7 +188,7 @@ public class Employee implements Serializable{
 		this.report = report;
 	}
 
-	public void setPositions(List<Position> positions) {
+	public void setPositions(List<Rol> positions) {
 		this.positions = positions;
 	}
 
@@ -228,19 +237,21 @@ public class Employee implements Serializable{
 	 * Use before deleting, so cascade does not apply.
 	 */
 	//REV: hacen falta estos m�todos para un manytomany
-	/*public void addPosition (Position position) {
+	public void addPosition (Rol position) {
 		if(!positions.contains(position)) {
 			getPositions().add(position);
-			position.setEmployees(this);
+			position.getEmployees().add(this);
 		}
 	}
-
-	public void removePosition (Position position) {
+	
+	public void removePosition (Rol position) {
 		if(positions.contains(position)) {
 			getPositions().remove(position);
-			position.setEmployees(null);
+			if(position.getEmployees().contains(this)){
+				position.getEmployees().remove(this);
+			}
 		}
-	}*/
+	}
 
 
 }

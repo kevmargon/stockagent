@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="positions")
 @NamedQuery(name="position.findAll", query="SELECT e FROM Position e")
-public class Position implements Serializable{
+public class Rol implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -31,11 +31,11 @@ public class Position implements Serializable{
 	private List<Employee> employees = new ArrayList<>();
 
 	// CONSTRUCTORES
-	public Position() {
+	public Rol() {
 		
 	}
 	
-	public Position(String name) {
+	public Rol(String name) {
 		this.name = name;
 	}
 	
