@@ -99,7 +99,7 @@ public class LogInEmployeeServ extends HttpServlet {
 	        	//boolean result = Metodos.conexionusuario(Metodos.encriptarsha1(user), Metodos.encriptarsha1(pass));
 	        	boolean result = LogInMethods.conexionusuario(user, pass);
 	        	if(result == false) {
-	    			out.println("El usuario y/o contraseña es erróneo");
+	    			out.println("El usuario y/o contraseï¿½a es errï¿½neo");
 	        	}else if(result){
 	    			out.println("Bienvenido, "+user.toString());
 	        	}

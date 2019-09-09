@@ -57,7 +57,7 @@ public class Customer implements Serializable {
 	}
 	
 	public Customer(String name, String surname1, String surname2, String dni, String phoneNumber,
-			Direction direction, List<Order> order) {
+			Direction direction, List<Order> orders) {
 		this.name = name;
 		this.surname1 = surname1;
 		this.surname2 = surname2;
