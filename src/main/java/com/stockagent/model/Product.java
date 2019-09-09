@@ -48,6 +48,8 @@ public class Product implements Serializable {
 	@JoinTable(name = "product_order", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"))
 	private List<Order> orders = new ArrayList<>();
 
+	// CONSTRUCTORS
+
 	public Product() {
 	}
 
@@ -76,7 +78,9 @@ public class Product implements Serializable {
 		this.suppliers = supplier;
 		this.orders = order;
 	}
-
+	
+	// GETTERS & SETTERS
+	
 	public long getId() {
 		return id;
 	}
@@ -144,4 +148,50 @@ public class Product implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	//ADDITIONAL METHODS
+				
+		/* Methods for detaching  the product from the 
+		 * supplier, adding another product or setting it to null.
+		 * Use before deleting, so cascade does not apply.
+		 */
+		public void addSupplier (Supplier supplier) {
+			if(!suppliers.contains(supplier)) {
+				getSuppliers().add(supplier);
+				supplier.getProducts().add(this);
+			}
+		}
+		
+		public void removeSupplier (Supplier supplier) {
+			if(suppliers.contains(supplier)) {
+				getSuppliers().remove(supplier);
+				if(supplier.getProducts().contains(this)){
+					supplier.getProducts().remove(this);
+				}
+			}
+		}
+		
+		
+		
+		/* Methods for detaching  the product from the 
+		 * order, adding another product or setting it to null.
+		 * Use before deleting, so cascade does not apply.
+		 */
+		public void addOrder (Order order) {
+			if(!orders.contains(order)) {
+				getOrders().add(order);
+				order.getProducts().add(this);
+			}
+		}
+		
+		public void removeOrder (Order order) {
+			if(orders.contains(order)) {
+				getOrders().remove(order);
+				if(order.getProducts().contains(this)){
+					order.getProducts().remove(this);
+				}
+			}
+		}
+		
+		
 }

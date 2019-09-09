@@ -3,7 +3,7 @@ package com.stockagent.dao;
 import java.util.List;
 
 
-import com.stockagent.model.Rol;
+import com.stockagent.model.Role;
 
 /*
 * DAO for position operations
@@ -11,14 +11,14 @@ import com.stockagent.model.Rol;
 
 public interface PositionDAO {
 
-	List<Rol> get();
+	List<Role> get();
 
 	/**
 	 * 
 	 * @param id
 	 * @return
 	 */
-	Rol get(long id);
+	Role get(long id);
 
 	/**
 	 * It saves a Position
@@ -26,7 +26,7 @@ public interface PositionDAO {
 	 * @param position
 	 * @return true if position is correctly saved or false if there is an error
 	 */
-	boolean save(Rol position);
+	boolean save(Role position);
 
 	/**
 	 * 
@@ -35,6 +35,6 @@ public interface PositionDAO {
 	 */
 	boolean delete(long id);
 
-	boolean update(Rol position);
+	boolean update(Role position);
 
 }

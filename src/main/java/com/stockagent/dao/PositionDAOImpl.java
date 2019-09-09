@@ -7,7 +7,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import com.stockagent.model.Rol;
+import com.stockagent.model.Role;
 import com.stockagent.util.JPAUtil;
 
 public class PositionDAOImpl implements PositionDAO {
@@ -15,26 +15,26 @@ public class PositionDAOImpl implements PositionDAO {
 	EntityManager manager = null;
 
 	@Override
-	public List<Rol> get() {
+	public List<Role> get() {
 
 		try {
 			manager = JPAUtil.getEntityManager();
-			TypedQuery<Rol> namedQuery = manager.createNamedQuery("Position.findAll", Rol.class);
-			List<Rol> results = namedQuery.getResultList();
+			TypedQuery<Role> namedQuery = manager.createNamedQuery("Position.findAll", Role.class);
+			List<Role> results = namedQuery.getResultList();
 			manager.close();
 			return results;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return new ArrayList<Rol>();
+		return new ArrayList<Role>();
 	}
 
 	@Override
-	public Rol get(long id) {
-		Rol position = null;
+	public Role get(long id) {
+		Role position = null;
 		try {
 			manager = JPAUtil.getEntityManager();
-			position = manager.find(Rol.class, id);
+			position = manager.find(Role.class, id);
 			manager.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class PositionDAOImpl implements PositionDAO {
 	}
 
 	@Override
-	public boolean save(Rol position) {
+	public boolean save(Role position) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();
@@ -64,7 +64,7 @@ public class PositionDAOImpl implements PositionDAO {
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();
-			Rol position = manager.find(Rol.class, id);
+			Role position = manager.find(Role.class, id);
 			if (position != null) {
 				manager.remove(position);
 				manager.getTransaction().commit();
@@ -78,7 +78,7 @@ public class PositionDAOImpl implements PositionDAO {
 	}
 
 	@Override
-	public boolean update(Rol position) {
+	public boolean update(Role position) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();

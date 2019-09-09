@@ -10,14 +10,14 @@
 		<class>com.stockagent.model.Direction</class>
 		<class>com.stockagent.model.Employee</class>
 		<class>com.stockagent.model.Order</class>
-		<class>com.stockagent.model.Rol</class>
+		<class>com.stockagent.model.Role</class>
 		<class>com.stockagent.model.Product</class>
 		<class>com.stockagent.model.Report</class>
 		<class>com.stockagent.model.Supplier</class>
 		
 	 <properties>
    		 <property name="javax.persistence.jdbc.password" value="" />
-   		 <property name="javax.persistence.schema-generation.database.action" value="none" /> <!-- drop-and-create -->
+   		 <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" /> <!-- drop-and-create, none -->
    		 <property name="javax.persistence.schema-generation.scripts.action" value="none" />
    		 <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/stockagent"/>
    		 <property name="javax.persistence.jdbc.user" value="root"/>
