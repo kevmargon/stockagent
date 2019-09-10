@@ -99,9 +99,13 @@ public class LogInEmployeeServ extends HttpServlet {
 	        	//boolean result = Metodos.conexionusuario(Metodos.encriptarsha1(user), Metodos.encriptarsha1(pass));
 	        	boolean result = LogInMethods.conexionusuario(user, pass);
 	        	if(result == false) {
-	    			out.println("El usuario y/o contrase�a es err�neo");
+	        		dispatcher = request.getRequestDispatcher("views/employee-login-form.jsp");
+	        		
+	        		dispatcher.forward(request, response);
 	        	}else if(result){
-	    			out.println("Bienvenido, "+user.toString());
+	        		
+	        		response.sendRedirect("AdminCategoryServ?action=LIST");
+
 	        	}
 	        }catch(Exception ex) {
 	        		ex.printStackTrace();

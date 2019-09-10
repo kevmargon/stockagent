@@ -51,6 +51,10 @@ public class AdminProductServ extends HttpServlet {
 				deleteProduct(request, response);
 				break;
 				
+			case "DETAIL":
+				productDetail(request, response);
+				break;
+				
 			default:
 				listProduct(request, response);
 				break;
@@ -82,8 +86,23 @@ public class AdminProductServ extends HttpServlet {
 		
 		dispatcher.forward(request, response);
 	}
+	
+	private void productDetail(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String id = request.getParameter("id");
+		
+		Product theProduct = productDAO.get(Long.parseLong(id));
+		
+		request.setAttribute("product", theProduct);
+		
+		dispatcher = request.getRequestDispatcher("/views/product-details.jsp");
+		
+		dispatcher.forward(request, response);
+	}
 
 	private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String nameCat = request.getParameter("name");
 		
 		List<Category> theListC = categoryDAO.get();
 		

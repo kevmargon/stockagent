@@ -7,52 +7,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<title>Product Form</title>
+	<title>Category Form</title>
 </head>
 <body>
 	<jsp:include page="header.html"></jsp:include>
-
-	<div class = "container">
+	  
+	  <div class = "container">
 	
-		<h3 style="text-align:center;">Product Form</h3>
+		<h3 style="text-align:center;">Category Form</h3>
 		<hr/>
 		
 		<div class = "row">
 			<div class = "col-md-4">
-				<form action = "${pageContext.request.contextPath}/AdminProductServ" method="POST">
+				<form action = "${pageContext.request.contextPath}/AdminCategoryServ" method="POST">
 				
 					<div class = "form-group">
-						<input type="text" class="form-control" name="name" placeholder="Enter Name" value="${product.name}"/>
+						<input type="text" class="form-control" name="name" placeholder="Enter Name Category" value="${category.name}"/>
 					</div>
 					
-					<div class = "form-group">
-						<input type="text" class="form-control" name="price" placeholder="Enter Price" value="${product.price}"/>
-					</div>
-					
-					<div class = "form-group">
-						<input type="text" class="form-control" name="amount" placeholder="Enter Amount" value="${product.amount}"/>
-					</div>
-					
-					<div class = "form-group">
-						<input type="text" class="form-control" name="manufacturer" placeholder="Enter Manufacturer" value="${product.manufacturer}"/>
-					</div>
-					
-					<div class="form-group col-md-15">
-						<select id="inputState" class="form-control" name="category" required>
-							<option selected disabled value="">Select Category</option>
-							<c:forEach items="${listC}" var="category"> 
-							<option value="${category.id}">${category.name}</option>
-							</c:forEach>
-						</select>
-					</div>
-					
-					<input type="hidden" name="id" value="${product.id}"/>
+					<input type="hidden" name="id" value="${category.id}"/>
 					
 					<button type="submit" class="btn btn-primary">Save</button>
 				</form>
 				</div>
 				</div>
-					<a href = "${pageContext.request.contextPath}/AdminProductServ?action=LIST">Back to List</a>
+					<a href = "${pageContext.request.contextPath}/AdminCategoryServ?action=LIST">Back to List</a>
 				</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

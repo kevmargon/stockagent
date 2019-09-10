@@ -1,23 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<HTML>
-<head>
-<title>Servlet | LogIn Form</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-</head>
-<body>
-	<h1>Log in Form</h1>
-	<form action="${pageContext.request.contextPath}/LogInEmployeeServ" method="POST">
+<%@ page errorPage="error.jsp" %>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/loginstyle.css">
+    <title>Signin Template · Bootstrap</title>
 
-		User Name:<br> <input type="text" name="user" placeholder="User Name"><br> <br>
-		Password:<br> <input type="password" name="pass" placeholder="Password"> <br> <br>
-		
-		<input type="submit" value="Send">
-		<input type ="reset" value ="Delete">
-	
-	</form>
-	<!--<hr>
-	<a href="NewUsForm.html">New user</a>
- 		(REV:añadir formulario nuevo usuario solicitud) -->
+  </head>
+  <body class="text-center">
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="${pageContext.request.contextPath}/img/logo.png" style="width:50%; height:50%;" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form action="${pageContext.request.contextPath}/LogInEmployeeServ" method="POST">
+      <input type="text" id="login" class="fadeIn second" name="user" placeholder="login" required>
+      <input type="password" id="password" class="fadeIn third" name="pass" placeholder="password" required>
+      <input type="submit" class="fadeIn fourth" value="Log In">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+
+  </div>
+</div>
 </body>
-</HTML>
+</html>
+
