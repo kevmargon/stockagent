@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Stockagent</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,16 +10,16 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="AdminCategoryServ?action=LIST">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/AdminCategoryServ?action=LIST">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="AdminProductServ?action=LIST">Products</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/AdminProductServ?action=LIST">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="AdminCategoryServ?action=LIST">Categories</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/AdminCategoryServ?action=LIST">Categories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="views/employee-login-form.jsp">Logout</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/views/employee-login-form.jsp">Logout</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

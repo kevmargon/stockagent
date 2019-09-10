@@ -25,7 +25,7 @@ public class Category implements Serializable {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	List<Product> products = new ArrayList<>();
 	
 	// CONSTRUCTORS

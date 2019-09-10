@@ -1,7 +1,6 @@
 package com.stockagent.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -91,13 +90,12 @@ public class LogInEmployeeServ extends HttpServlet {
 	}*/
 		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		   PrintWriter out = response.getWriter();
 	        String user = request.getParameter("user");
 	        String pass = request.getParameter("pass");
 
 	        try {
-	        	//boolean result = Metodos.conexionusuario(Metodos.encriptarsha1(user), Metodos.encriptarsha1(pass));
-	        	boolean result = LogInMethods.conexionusuario(user, pass);
+	        	boolean result = LogInMethods.conexionusuario(LogInMethods.encriptarsha1(user), LogInMethods.encriptarsha1(pass));
+	        	//boolean result = LogInMethods.conexionusuario(user, pass);
 	        	if(result == false) {
 	        		dispatcher = request.getRequestDispatcher("views/employee-login-form.jsp");
 	        		

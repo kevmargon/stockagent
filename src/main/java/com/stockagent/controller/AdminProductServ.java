@@ -40,7 +40,11 @@ public class AdminProductServ extends HttpServlet {
 		switch(action) {
 			
 			case "LIST":
-				listProduct(request, response);
+			listProduct(request, response);
+			break;
+			
+			case "LISTCAT":
+				listProductByCat(request, response);
 				break;
 				
 			case "EDIT":
@@ -101,9 +105,7 @@ public class AdminProductServ extends HttpServlet {
 	}
 
 	private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String nameCat = request.getParameter("name");
-		
+				
 		List<Category> theListC = categoryDAO.get();
 		
 		request.getSession().setAttribute("listC", theListC);
@@ -116,6 +118,20 @@ public class AdminProductServ extends HttpServlet {
 		
 		dispatcher.forward(request, response);
 	}
+	
+	private void listProductByCat(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		  
+		  String id = request.getParameter("id");
+		  Category theCategory = categoryDAO.get(Long.parseLong(id));
+		  
+		  List<Product> theListP = theCategory.getProducts();
+		 
+		  request.setAttribute("listP", theListP);
+
+		  dispatcher = request.getRequestDispatcher("/views/admin-product-list.jsp");
+		  
+		  dispatcher.forward(request, response);
+		 }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
