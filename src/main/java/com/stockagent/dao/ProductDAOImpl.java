@@ -27,6 +27,22 @@ EntityManager manager = null;
 		}
 		return new ArrayList<Product>();
 	}
+	
+	@Override
+	public List<Product> getCat(long id) {
+		try {
+			manager = JPAUtil.getEntityManager();
+			String jpql = "SELECT p FROM Product p WHERE p.id_categories = ?1";
+			Query query = manager.createQuery(jpql);
+			query.setParameter(1, (long) id);
+			List<Product> results = query.getResultList();
+			manager.close();
+			return results;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ArrayList<Product>();
+	}
 
 	@Override
 	public Product get(long id) {
@@ -91,5 +107,6 @@ EntityManager manager = null;
 		}
 		return flag;
 	}
+	
 
 }

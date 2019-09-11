@@ -21,10 +21,32 @@
 		<div class="active-cyan-3 active-cyan-4 mb-4">
  			
 		</div>
-		
-		<div class="alert alert-info" role="alert">
-			<p>${NOTIFICATION}</p>
-		</div>
+
+		<c:choose>
+			<c:when test="${IDNAME=='save'}">
+				<div class="alert alert-success" role="alert">
+					<p>${NOTIFICATION}</p>
+				</div>
+			</c:when>
+			<c:when test="${IDNAME=='update'}">
+				<div class="alert alert-info" role="alert">
+					<p>${NOTIFICATION}</p>
+				</div>
+			</c:when>
+			<c:when test="${IDNAME=='delete'}">
+				<div class="alert alert-danger" role="alert">
+					<p>${NOTIFICATION}</p>
+				</div>
+			</c:when>
+			<c:when test="${IDNAME=='error'}">
+				<div class="alert alert-danger" role="alert">
+					<p>Error al procesar su solicitud.</p>
+				</div>
+			</c:when>
+			<c:otherwise>
+
+			</c:otherwise>
+		</c:choose>
 
 		<p>
 			<button class = "btn btn-primary" onclick="window.location.href = 'views/admin-category-form.jsp'">Add Category</button>

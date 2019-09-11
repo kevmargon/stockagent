@@ -13,7 +13,7 @@
 	<title>Category List</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="headerUser.jsp"></jsp:include>
 	 
 	<div class = "container">
 
@@ -41,10 +41,6 @@
 					<td>${category.name}</td>
 					<td> 
 						<a href="${pageContext.request.contextPath}/AdminProductServ?action=LIST&name=${category.name}"><span class="fa fa-eye"></span></a>
-						|
-						<a href = "${pageContext.request.contextPath}/AdminCategoryServ?action=EDIT&id=${category.id}"><span class="fa fa-edit"></span></a>
-				   		| 
-						<a href = "${pageContext.request.contextPath}/AdminCategoryServ?action=DELETE&id=${category.id}" onclick="return confirm('You are going to delete the following item ${category.name}');"><span class="fa fa-trash"></span></a>
 					</td>
 				</tr>
 				

@@ -25,6 +25,9 @@ public interface ProductDAO {
 	 * @param product
 	 * @return true if product is correctly saved or false if there is an error
 	 */
+	
+	List<Product> getCat(long id);
+	
 	boolean save(Product product);
 	
 	/**

@@ -35,13 +35,15 @@ public class AdminProductServ extends HttpServlet {
 		
 		if(action == null) {
 			action = "LIST";
+			request.setAttribute("IDNAME", "none");
 		}
 		
 		switch(action) {
 			
 			case "LIST":
-			listProduct(request, response);
-			break;
+				listProduct(request, response);
+				request.setAttribute("IDNAME", "none");
+				break;
 			
 			case "LISTCAT":
 				listProductByCat(request, response);
@@ -70,9 +72,12 @@ public class AdminProductServ extends HttpServlet {
 	private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String id = request.getParameter("id");
-	
+		
 		if(productDAO.delete(Long.parseLong(id))) {
 			request.setAttribute("NOTIFICATION", "Product Deleted Successfully!");
+			request.setAttribute("IDNAME", "delete");
+		}else {
+			request.setAttribute("IDNAME", "error");
 		}
 		
 		listProduct(request, response);
@@ -82,9 +87,12 @@ public class AdminProductServ extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		
+		request.setAttribute("id", id);
+		
 		Product theProduct = productDAO.get(Long.parseLong(id));
 		
 		request.setAttribute("product", theProduct);
+		request.setAttribute("IDNAME", "none");
 		
 		dispatcher = request.getRequestDispatcher("/views/admin-product-form.jsp");
 		
@@ -125,6 +133,8 @@ public class AdminProductServ extends HttpServlet {
 		  Category theCategory = categoryDAO.get(Long.parseLong(id));
 		  
 		  List<Product> theListP = theCategory.getProducts();
+		  
+//		  List<Product> theListP = productDAO.getCat(Long.parseLong(id)); 
 		 
 		  request.setAttribute("listP", theListP);
 
@@ -148,12 +158,18 @@ public class AdminProductServ extends HttpServlet {
 			
 			if(productDAO.save(product)) {
 				request.setAttribute("NOTIFICATION", "Product Saved Successfully!");
-			}	
+				request.setAttribute("IDNAME", "save");
+			}else {
+				request.setAttribute("IDNAME", "error");
+			}
 		}else {	
 			product.setId(Long.parseLong(id));
 			if(productDAO.update(product)) {
 				request.setAttribute("NOTIFICATION", "Product Updated Successfully!");
-			}	
+				request.setAttribute("IDNAME", "update");
+			}else {
+				request.setAttribute("IDNAME", "error");
+			}
 		}
 		listProduct(request, response);
 	}

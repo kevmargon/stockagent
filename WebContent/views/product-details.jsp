@@ -13,9 +13,9 @@
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-	<div class="container">
+	<div style="margin;" class="container">
 		<div class="row">
-			<div style="height: 40%; wdddddfsidth: 40%;" class="img-fluid">
+			<div style="height: 40%; width: 40%;" class="img-fluid">
 				<!-- Nomeclatura para los nombres de las imagenes "ManufacturerName"-"ProductName".jpg Ejemplo: Adidas-Superstar.jpg-->
 				<img style="width: 100%; height: 100%;" src="img/${product.manufacturer}-${product.name}.jpg" />
 			</div>

@@ -89,25 +89,27 @@ public class LogInEmployeeServ extends HttpServlet {
 		}
 	}*/
 		
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	        String user = request.getParameter("user");
-	        String pass = request.getParameter("pass");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String user = request.getParameter("user");
+		String pass = request.getParameter("pass");
 
-	        try {
-	        	boolean result = LogInMethods.conexionusuario(LogInMethods.encriptarsha1(user), LogInMethods.encriptarsha1(pass));
-	        	//boolean result = LogInMethods.conexionusuario(user, pass);
-	        	if(result == false) {
-	        		dispatcher = request.getRequestDispatcher("views/employee-login-form.jsp");
-	        		
-	        		dispatcher.forward(request, response);
-	        	}else if(result){
-	        		
-	        		response.sendRedirect("AdminCategoryServ?action=LIST");
+		try {
+			boolean result = LogInMethods.conexionusuario(LogInMethods.encriptarsha1(user),
+					LogInMethods.encriptarsha1(pass));
+			// boolean result = LogInMethods.conexionusuario(user, pass);
+			if (result == false) {
+				dispatcher = request.getRequestDispatcher("views/employee-login-form.jsp");
 
-	        	}
-	        }catch(Exception ex) {
-	        		ex.printStackTrace();
-	        	}
+				dispatcher.forward(request, response);
+			} else if (result) {
+
+				response.sendRedirect("AdminCategoryServ?action=LIST");
+
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 
 

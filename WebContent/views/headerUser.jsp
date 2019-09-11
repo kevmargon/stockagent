@@ -10,13 +10,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/AdminCategoryServ?action=LIST">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/CategoryServ?action=LIST">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/AdminProductServ?action=LIST">Products</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/ProductServ?action=LIST">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/AdminCategoryServ?action=LIST">Categories</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/CategoryServ?action=LIST">Categories</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Reports</a>

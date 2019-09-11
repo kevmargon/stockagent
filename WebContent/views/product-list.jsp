@@ -20,10 +20,6 @@
 		
 		<h3 style="text-align:center;">Product List</h3>
 		<hr/>
-		<div class="alert alert-info" role="alert">
-			<p>${NOTIFICATION}</p>
-		</div>
-		
 		<p>
 			<button class = "btn btn-primary" onclick="window.location.href = 'views/admin-product-form.jsp'">Add Product</button>
 		</p>
