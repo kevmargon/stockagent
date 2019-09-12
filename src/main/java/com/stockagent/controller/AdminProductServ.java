@@ -130,12 +130,15 @@ public class AdminProductServ extends HttpServlet {
 	private void listProductByCat(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  
 		  String id = request.getParameter("id");
+		  String nameCat = request.getParameter("nameCat");
 		  Category theCategory = categoryDAO.get(Long.parseLong(id));
 		  
 		  List<Product> theListP = theCategory.getProducts();
 		  
 //		  List<Product> theListP = productDAO.getCat(Long.parseLong(id)); 
 		 
+		  
+		  request.setAttribute("nameCat", nameCat);
 		  request.setAttribute("listP", theListP);
 
 		  dispatcher = request.getRequestDispatcher("/views/admin-product-list.jsp");

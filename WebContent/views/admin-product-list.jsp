@@ -17,10 +17,17 @@
 	
 	<div class = "container">
 
-		
-		<h3 style="text-align:center;">Product List</h3>
-		<hr/>
-		
+		<c:if test="${nameCat.isEmpty() || nameCat == null}">
+			<h3 style="text-align: center;">Product List</h3>
+			<c:set var="n" value="1"/>
+			<hr />
+		</c:if>
+
+		<c:if test="${n!=1}">
+			<h3 style="text-align: center;">Category ${nameCat}. Products</h3>
+			<hr />
+		</c:if>
+
 		<c:choose>
 			<c:when test="${IDNAME=='save'}">
 				<div class="alert alert-success" role="alert">
@@ -43,26 +50,21 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-
 			</c:otherwise>
 		</c:choose>
-		
 		<p>
 			<button class = "btn btn-primary" onclick="window.location.href = 'views/admin-product-form.jsp'">Add Product</button>
 		</p>
-	
 		<table class = "table table-striped table-bordered table-hover">
-			
 			<tr class = "thead-light">
 				<th>Products</th>
-				
+				<th>Manufacturer</th>
 				<th>Actions</th>
-			</tr>
-			
+			</tr>			
 			<c:forEach items="${listP}" var="product">
-			
 				<tr>
 					<td>${product.name}</td>
+					<td>${product.manufacturer}</td>
 					<td> 
 						<a href="${pageContext.request.contextPath}/AdminProductServ?action=DETAIL&id=${product.id}"><span class="fa fa-eye"></span></a>
 						|
@@ -71,9 +73,7 @@
 						<a href="${pageContext.request.contextPath}/AdminProductServ?action=DELETE&id=${product.id}" onclick="return confirm('You are going to delete the following item ${product.name}');"><span class="fa fa-trash"></span></a>		
 					</td>
 				</tr>
-				
 			</c:forEach>
-			
 		</table>
 		
 	</div>

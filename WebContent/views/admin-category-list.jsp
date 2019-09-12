@@ -64,7 +64,7 @@
 				<tr>
 					<td>${category.name}</td>
 					<td>
-						<a href="${pageContext.request.contextPath}/AdminProductServ?action=LISTCAT&id=${category.id}"><span class="fa fa-eye"></span></a>
+						<a href="${pageContext.request.contextPath}/AdminProductServ?action=LISTCAT&id=${category.id}&nameCat=${category.name}"><span class="fa fa-eye"></span></a>
 						|
 						<a href="${pageContext.request.contextPath}/AdminCategoryServ?action=EDIT&id=${category.id}"><span class="fa fa-edit"></span></a>
 				   		| 
