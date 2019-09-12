@@ -9,43 +9,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/ico" href="../img/icon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<title>Category List</title>
 </head>
 <body>
 	<jsp:include page="headerUser.jsp"></jsp:include>
-	 
+	
 	<div class = "container">
 
-		<h3 style=text-align:center;>Category List</h3>
-		<hr/>
-		
-		<div class="alert alert-info" role="alert">
-			<p>${NOTIFICATION}</p>
-		</div>
+		<c:if test="${nameCat.isEmpty() || nameCat == null}">
+			<h3 style="text-align: center;">Product List</h3>
+			<c:set var="n" value="1"/>
+			<hr />
+		</c:if>
 
+		<c:if test="${n!=1}">
+			<h3 style="text-align: center;">Category ${nameCat}. Products</h3>
+			<hr />
+		</c:if>
+
+		<c:choose>
+			<c:when test="${IDNAME=='save'}">
+				<div class="alert alert-success" role="alert">
+					<p>${NOTIFICATION}</p>
+				</div>
+			</c:when>
+			<c:when test="${IDNAME=='update'}">
+				<div class="alert alert-success" role="alert">
+					<p>${NOTIFICATION}</p>
+				</div>
+			</c:when>
+			<c:when test="${IDNAME=='delete'}">
+				<div class="alert alert-success" role="alert">
+					<p>${NOTIFICATION}</p>
+				</div>
+			</c:when>
+			<c:when test="${IDNAME=='error'}">
+				<div class="alert alert-warning" role="alert">
+					<p>Error al procesar su solicitud.</p>
+				</div>
+			</c:when>
+			<c:otherwise>
+			</c:otherwise>
+		</c:choose>
 		<p>
-			<button class = "btn btn-primary" onclick="window.location.href = 'views/admin-category-form.jsp'">Add Category</button>
+			<button class = "btn btn-primary" onclick="window.location.href = 'views/admin-product-form.jsp'">Add Product</button>
 		</p>
-	
 		<table class = "table table-striped table-bordered table-hover">
-			
 			<tr class = "thead-light">
-				<th>Categories</th>
+				<th>Products</th>
+				<th>Manufacturer</th>
 				<th>Actions</th>
-			</tr>
-			
-			<c:forEach items="${listC}" var="category">
-			
+			</tr>			
+			<c:forEach items="${listP}" var="product">
 				<tr>
-					<td>${category.name}</td>
+					<td>${product.name}</td>
+					<td>${product.manufacturer}</td>
 					<td> 
-						<a href="${pageContext.request.contextPath}/AdminProductServ?action=LIST&name=${category.name}"><span class="fa fa-eye"></span></a>
+						<a href="${pageContext.request.contextPath}/AdminProductServ?action=DETAIL&id=${product.id}"><span class="fa fa-eye"></span></a>
 					</td>
 				</tr>
-				
 			</c:forEach>
-			
 		</table>
 		
 	</div>

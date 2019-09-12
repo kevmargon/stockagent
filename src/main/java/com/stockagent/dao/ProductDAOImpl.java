@@ -32,7 +32,7 @@ EntityManager manager = null;
 	public List<Product> getCat(long id) {
 		try {
 			manager = JPAUtil.getEntityManager();
-			String jpql = "SELECT p FROM Product p WHERE p.id_categories = ?1";
+			String jpql = "SELECT p FROM Product p WHERE p.category.id = ?1";
 			Query query = manager.createQuery(jpql);
 			query.setParameter(1, (long) id);
 			List<Product> results = query.getResultList();

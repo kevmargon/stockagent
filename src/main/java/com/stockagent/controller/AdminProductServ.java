@@ -133,9 +133,10 @@ public class AdminProductServ extends HttpServlet {
 		  String nameCat = request.getParameter("nameCat");
 		  Category theCategory = categoryDAO.get(Long.parseLong(id));
 		  
-		  List<Product> theListP = theCategory.getProducts();
+		  // crear mertodo en dao y consults jpql
+		  //List<Product> theListP = theCategory.getProducts();
 		  
-//		  List<Product> theListP = productDAO.getCat(Long.parseLong(id)); 
+		  List<Product> theListP = productDAO.getCat(Long.parseLong(id)); 
 		 
 		  
 		  request.setAttribute("nameCat", nameCat);

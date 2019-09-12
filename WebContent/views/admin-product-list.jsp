@@ -35,17 +35,17 @@
 				</div>
 			</c:when>
 			<c:when test="${IDNAME=='update'}">
-				<div class="alert alert-info" role="alert">
+				<div class="alert alert-success" role="alert">
 					<p>${NOTIFICATION}</p>
 				</div>
 			</c:when>
 			<c:when test="${IDNAME=='delete'}">
-				<div class="alert alert-danger" role="alert">
+				<div class="alert alert-success" role="alert">
 					<p>${NOTIFICATION}</p>
 				</div>
 			</c:when>
 			<c:when test="${IDNAME=='error'}">
-				<div class="alert alert-danger" role="alert">
+				<div class="alert alert-warning" role="alert">
 					<p>Error al procesar su solicitud.</p>
 				</div>
 			</c:when>
