@@ -22,17 +22,6 @@
  			
 		</div>
 
-		<c:if test="${nameCat.isEmpty() || nameCat == null}">
-			<h3 style="text-align: center;">Product List</h3>
-			<c:set var="n" value="1"/>
-			<hr />
-		</c:if>
-
-		<c:if test="${n!=1}">
-			<h3 style="text-align: center;">Category ${nameCat}. Products</h3>
-			<hr />
-		</c:if>
-
 		<c:choose>
 			<c:when test="${IDNAME=='save'}">
 				<div class="alert alert-success" role="alert">
@@ -41,17 +30,17 @@
 			</c:when>
 			<c:when test="${IDNAME=='update'}">
 				<div class="alert alert-success" role="alert">
-					<p>${NOTIFICATION}</p>
+					${NOTIFICATION}
 				</div>
 			</c:when>
 			<c:when test="${IDNAME=='delete'}">
 				<div class="alert alert-success" role="alert">
-					<p>${NOTIFICATION}</p>
+					${NOTIFICATION}
 				</div>
 			</c:when>
 			<c:when test="${IDNAME=='error'}">
-				<div class="alert alert-warning" role="alert">
-					<p>Error al procesar su solicitud.</p>
+				<div class="alert alert-danger" role="alert">
+					ERROR! Bad request.
 				</div>
 			</c:when>
 			<c:otherwise>

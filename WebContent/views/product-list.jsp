@@ -31,30 +31,42 @@
 		<c:choose>
 			<c:when test="${IDNAME=='save'}">
 				<div class="alert alert-success" role="alert">
-					<p>${NOTIFICATION}</p>
+					${NOTIFICATION}
 				</div>
 			</c:when>
 			<c:when test="${IDNAME=='update'}">
 				<div class="alert alert-success" role="alert">
-					<p>${NOTIFICATION}</p>
+					${NOTIFICATION}
 				</div>
 			</c:when>
 			<c:when test="${IDNAME=='delete'}">
 				<div class="alert alert-success" role="alert">
-					<p>${NOTIFICATION}</p>
+					${NOTIFICATION}
 				</div>
 			</c:when>
 			<c:when test="${IDNAME=='error'}">
-				<div class="alert alert-warning" role="alert">
-					<p>Error al procesar su solicitud.</p>
+				<div class="alert alert-danger" role="alert">
+					ERROR! Bad request.
 				</div>
 			</c:when>
 			<c:otherwise>
 			</c:otherwise>
 		</c:choose>
-		<p>
-			<button class = "btn btn-primary" onclick="window.location.href = 'views/admin-product-form.jsp'">Add Product</button>
+		
+		<div class="btn-group">
+			<div class="dropdown">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<c:forEach items="${listC}" var="category"> 
+					 <a class="dropdown-item" href="${pageContext.request.contextPath}/ProductServ?action=LISTCAT&id=${category.id}&nameCat=${category.name}">${category.name}</a>
+					</c:forEach>
+				</div>
+			</div>
+			<p  style="text-align: right; margin-left: 10px;">
+			<button class = "btn btn-primary" onclick="window.location.href = 'views/-product-form.jsp'">Add Product</button>
 		</p>
+		</div>
+		
 		<table class = "table table-striped table-bordered table-hover">
 			<tr class = "thead-light">
 				<th>Products</th>
@@ -75,7 +87,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-		
 	</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

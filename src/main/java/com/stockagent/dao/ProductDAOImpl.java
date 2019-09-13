@@ -43,6 +43,22 @@ EntityManager manager = null;
 		}
 		return new ArrayList<Product>();
 	}
+	
+	@Override
+	public List<Product> getSearch(String name) {
+		try {
+			manager = JPAUtil.getEntityManager();
+			String jpql = "SELECT p FROM Product p WHERE p.name = '%:name%'";
+			Query query = manager.createQuery(jpql);
+			query.setParameter("name", name);
+			List<Product> results = query.getResultList();
+			manager.close();
+			return results;
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new ArrayList<Product>();
+	}
 
 	@Override
 	public Product get(long id) {

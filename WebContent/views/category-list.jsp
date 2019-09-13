@@ -17,17 +17,6 @@
 	
 	<div class = "container">
 
-		<c:if test="${nameCat.isEmpty() || nameCat == null}">
-			<h3 style="text-align: center;">Product List</h3>
-			<c:set var="n" value="1"/>
-			<hr />
-		</c:if>
-
-		<c:if test="${n!=1}">
-			<h3 style="text-align: center;">Category ${nameCat}. Products</h3>
-			<hr />
-		</c:if>
-
 		<c:choose>
 			<c:when test="${IDNAME=='save'}">
 				<div class="alert alert-success" role="alert">

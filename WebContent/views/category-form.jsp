@@ -23,7 +23,7 @@
 				<form action = "${pageContext.request.contextPath}/AdminCategoryServ" method="POST">
 				
 					<div class = "form-group">
-						<input type="text" class="form-control" name="name" placeholder="Enter Name Category" value="${category.name}"/>
+						<input type="text" class="form-control" name="name" placeholder="Enter Name Category" value="${category.name}" required/>
 					</div>
 					
 					<input type="hidden" name="id" value="${category.id}"/>

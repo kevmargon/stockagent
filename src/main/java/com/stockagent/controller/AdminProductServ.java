@@ -49,6 +49,10 @@ public class AdminProductServ extends HttpServlet {
 				listProductByCat(request, response);
 				break;
 				
+			case "SEARCH":
+				listSearch(request, response);
+				break;
+				
 			case "EDIT":
 				getSingleProduct(request, response);
 				break;
@@ -112,6 +116,24 @@ public class AdminProductServ extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
+	private void listSearch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String q = request.getParameter("q");
+		
+		List<Category> theListC = categoryDAO.get();
+		
+		request.getSession().setAttribute("listC", theListC);
+		
+		List<Product> theListP = productDAO.getSearch(q);
+		
+		request.setAttribute("listP", theListP);
+
+		dispatcher = request.getRequestDispatcher("/views/admin-product-list.jsp");
+		
+		dispatcher.forward(request, response);
+	}
+	
+	
 	private void listProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
 		List<Category> theListC = categoryDAO.get();
@@ -130,17 +152,17 @@ public class AdminProductServ extends HttpServlet {
 	private void listProductByCat(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  
 		  String id = request.getParameter("id");
+		  
 		  String nameCat = request.getParameter("nameCat");
-		  Category theCategory = categoryDAO.get(Long.parseLong(id));
-		  
-		  // crear mertodo en dao y consults jpql
-		  //List<Product> theListP = theCategory.getProducts();
-		  
-		  List<Product> theListP = productDAO.getCat(Long.parseLong(id)); 
-		 
-		  
 		  request.setAttribute("nameCat", nameCat);
+		  
+		  List<Product> theListP = productDAO.getCat(Long.parseLong(id)); 		 
 		  request.setAttribute("listP", theListP);
+		  
+		  List<Category> theListC = categoryDAO.get();
+		  request.getSession().setAttribute("listC", theListC);
+		  
+		  
 
 		  dispatcher = request.getRequestDispatcher("/views/admin-product-list.jsp");
 		  

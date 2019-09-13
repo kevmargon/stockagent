@@ -104,7 +104,7 @@ public class LogInEmployeeServ extends HttpServlet {
 				dispatcher.forward(request, response);
 			} else if (result) {
 
-				response.sendRedirect("AdminCategoryServ?action=LIST");
+				response.sendRedirect("AdminProductServ?action=LIST");
 
 			}
 		} catch (Exception ex) {

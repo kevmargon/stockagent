@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Stockagent</a>
+  <a class="navbar-brand" href="#">StockAgent</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -14,9 +14,6 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/ProductServ?action=LIST">Products</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/CategoryServ?action=LIST">Categories</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Reports</a>

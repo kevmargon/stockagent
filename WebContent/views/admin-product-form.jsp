@@ -23,19 +23,19 @@
 				<form action = "${pageContext.request.contextPath}/AdminProductServ" method="POST">
 				
 					<div class = "form-group">
-						<input type="text" class="form-control" name="name" placeholder="Enter Name" value="${product.name}"/>
+						<input type="text" class="form-control" name="name" placeholder="Enter Name" value="${product.name}" required/>
 					</div>
 					
 					<div class = "form-group">
-						<input type="text" class="form-control" name="price" placeholder="Enter Price" value="${product.price}"/>
+						<input type="text" class="form-control" name="price" placeholder="Enter Price" value="${product.price}" required/>
 					</div>
 					
 					<div class = "form-group">
-						<input type="text" class="form-control" name="amount" placeholder="Enter Amount" value="${product.amount}"/>
+						<input type="text" class="form-control" name="amount" placeholder="Enter Amount" value="${product.amount}" required/>
 					</div>
 					
 					<div class = "form-group">
-						<input type="text" class="form-control" name="manufacturer" placeholder="Enter Manufacturer" value="${product.manufacturer}"/>
+						<input type="text" class="form-control" name="manufacturer" placeholder="Enter Manufacturer" value="${product.manufacturer}" required/>
 					</div>
 					
 					<div class="form-group col-md-15">

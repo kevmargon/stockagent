@@ -14,13 +14,13 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div style="margin;" class="container">
-		<div class="row">
+	<div class="row bg-light grey" style="padding:20px; margin-top:20px;">	
 			<div style="height: 40%; width: 40%;" class="img-fluid">
 				<!-- Nomeclatura para los nombres de las imagenes "ManufacturerName"-"ProductName".jpg Ejemplo: Adidas-Superstar.jpg-->
 				<img style="width: 100%; height: 100%;" src="img/${product.manufacturer}-${product.name}.jpg" />
 			</div>
 			
-			<div class="col-xs-5" style="border: 0px solid gray">
+			<div class="col-xs-5" style="border: 0px solid gray; margin:auto; padding-left:20px;">
 				<!-- Datos del vendedor y titulo del producto -->
 				<h3>${product.name}</h3>
 				<h5 style="color: #337ab7">
@@ -36,12 +36,10 @@
 				<!-- Detalles especificos del producto -->
 
 				<div class="section" style="padding-bottom: 5px;">
-					<h3 class="title-attr">
-						Category
-					</h3>
-					<div>
-						<div class="attr2">${product.category.name}</div>
-					</div>
+					<h6 class="title-price">
+						<small>CATEGORY</small>
+					</h6>
+						<h4 style="margin-top: 0px;">${product.category.name}</h4>
 				</div>
 				<div class="section" style="padding-bottom: 20px;">
 					<h6 class="title-attr">

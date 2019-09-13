@@ -28,6 +28,8 @@ public interface ProductDAO {
 	
 	List<Product> getCat(long id);
 	
+	List<Product> getSearch(String id);
+	
 	boolean save(Product product);
 	
 	/**
