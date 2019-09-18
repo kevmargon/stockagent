@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 import com.stockagent.model.Role;
 import com.stockagent.util.JPAUtil;
 
-public class PositionDAOImpl implements PositionDAO {
+public class RoleDAOImpl implements RoleDAO {
 
 	EntityManager manager = null;
 
@@ -19,7 +19,7 @@ public class PositionDAOImpl implements PositionDAO {
 
 		try {
 			manager = JPAUtil.getEntityManager();
-			TypedQuery<Role> namedQuery = manager.createNamedQuery("Position.findAll", Role.class);
+			TypedQuery<Role> namedQuery = manager.createNamedQuery("Role.findAll", Role.class);
 			List<Role> results = namedQuery.getResultList();
 			manager.close();
 			return results;
@@ -31,24 +31,24 @@ public class PositionDAOImpl implements PositionDAO {
 
 	@Override
 	public Role get(long id) {
-		Role position = null;
+		Role role = null;
 		try {
 			manager = JPAUtil.getEntityManager();
-			position = manager.find(Role.class, id);
+			role = manager.find(Role.class, id);
 			manager.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return position;
+		return role;
 	}
 
 	@Override
-	public boolean save(Role position) {
+	public boolean save(Role role) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();
-			manager.persist(position);
+			manager.persist(role);
 			manager.getTransaction().commit();
 			manager.close();
 			flag = true;
@@ -64,9 +64,9 @@ public class PositionDAOImpl implements PositionDAO {
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();
-			Role position = manager.find(Role.class, id);
-			if (position != null) {
-				manager.remove(position);
+			Role role = manager.find(Role.class, id);
+			if (role != null) {
+				manager.remove(role);
 				manager.getTransaction().commit();
 				flag = true;
 			}
@@ -78,12 +78,12 @@ public class PositionDAOImpl implements PositionDAO {
 	}
 
 	@Override
-	public boolean update(Role position) {
+	public boolean update(Role role) {
 		boolean flag = false;
 		try {
 			manager = JPAUtil.getEntityManager();
 			manager.getTransaction().begin();
-			manager.merge(position);
+			manager.merge(role);
 			manager.getTransaction().commit();
 			manager.close();
 			flag = true;

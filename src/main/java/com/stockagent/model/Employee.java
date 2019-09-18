@@ -29,7 +29,7 @@ public class Employee implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column (name = "id")
-	private long id;
+	private Long id;
 	
 	@Column (name = "user")
 	private String user;
@@ -49,27 +49,27 @@ public class Employee implements Serializable{
 	@Column (name = "dni")
 	private String dni;
 	
-	@Column (name = "phonenumber")// REV-M nullable = false e igualar a 0 cuando era int y pasar a Integer
+	@Column (name = "phone_number") 
 	private String phoneNumber;
 	
 	//Unidirectional association to Direction
-	@OneToOne(cascade = {CascadeType.ALL}) 
+	@OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY) 
 	@JoinColumn(name = "id_direction") //  Employee is the owner class
 	private Direction direction;
 	
 	//Unidirectional association to Report
-	@OneToOne (mappedBy = "employee", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER) //REV: podemos Lazy??, realmente queremos que se eliminen en cascada los report al eliminar su employee?, si no problems, habr�a que desvincular
+	@OneToOne (mappedBy = "employee", fetch = FetchType.LAZY) 
 	private Report report;
 	
-	// Bi-directional many-to-many association to Role
-	@ManyToMany //REV: Lazy??
+	// Many-to-many association to Role
+	@ManyToMany 
 	@JoinTable(name = "employee_role",
 	joinColumns = @JoinColumn(name = "id_employee", referencedColumnName = "id"),
 	inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "id"))
 	private List<Role> roles = new ArrayList<>();
 	
-	// Bi-directional one-to-many association to Order
-	@OneToMany(mappedBy = "employee", cascade = {CascadeType.ALL}) //REV: podemos Lazy??, cascada?
+	// One-to-many association to Order
+	@OneToMany(mappedBy = "employee", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY) 
 	private List<Order> orders;
 	
 	//CONSTRUCTORS
@@ -117,7 +117,7 @@ public class Employee implements Serializable{
 		return serialVersionUID;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -157,7 +157,7 @@ public class Employee implements Serializable{
 		return orders;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
